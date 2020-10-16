@@ -1,6 +1,8 @@
 # Task Manager App
 *You can find the code of this project in master branch of this repository
 
+*Install the node modules
+
 *Manager's Credentials are 
 id: "12345678",
 pwd: "manager"
