@@ -1,0 +1,11 @@
+<div class="centered-content">
+    <div class="modal-box form-group">
+        <h1 class="title">Add a new Task</h1>
+        <input #TaskInput type="text" class="form-control has-background-light" placeholder="Enter task">
+        <br />
+        <input #TaskInput2 type="text" class="form-control has-background-light" placeholder="Enter Deadline time in hrs:mins:secs (Ex: 22:30:5)">
+    <button class="btn white-text" routerLink='../'>Cancel</button>
+    <button class="btn btn-primary" (click)="addTask(TaskInput.value,TaskInput2.value)">Add</button>
+    </div>
+</div>
+

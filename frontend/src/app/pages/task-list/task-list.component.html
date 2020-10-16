@@ -1,0 +1,65 @@
+<div class="centered-content">
+    <button class="btn" style="position: absolute;top: 50px;right: 50px;background-color: black;color: white;" routerLink="/login" >Logout</button>
+    <div class="task-manager-container">
+        <div class="sidebar">
+            <h1 class="title has-text-primary">
+                WELCOME MANAGER
+            </h1>
+            <h3 class="has-text-primary white-text">
+                EMPLOYEES LIST
+            </h3>
+            <div class="list-menu">
+                <a class="list-menu-item is-active" (click)="open()" [routerLink]="['/lists',list._id]" routerLinkActive="is-active" *ngFor="let list of lists">
+                    <p class="white-text">
+                        {{list.title}}
+                    <span style="position:relative;left: 20px;" class="pull-right task-delete btn-rounded-corners" (click)="deletelist(list)">
+                        X
+                    </span>
+                    </p>
+                </a>
+            </div>
+            <button class="btn btn-primary btn-rounded-corners" routerLink="/new-list">Add List</button>
+        </div>
+        <div class="task-list-container" *ngIf="flag==true">
+            <h1 class="title has-text-primary">
+                TASKS
+            </h1>
+            <div class="task" [class.complete]="task.completed" *ngFor="let task of tasks" >
+                <p class="white-text" style="font-size: 18px;">
+                   <b>{{task.title}}</b>
+                <span class="pull-right task-delete btn-rounded-corners" (click)="deletetask(task)">
+                    X
+                </span>
+                <span style="color: lightgreen;position: relative;left: 250px;" *ngIf="task.submittime==true">
+                    DONE
+                </span>
+                <span style="color: rgb(218, 104, 104);position: relative;left: 250px;" *ngIf="task.submittime==false">
+                    NOT DELIVERED
+                </span>
+                </p>
+                <div class="text-white" style="font-size: 10px;">
+                   Progress:       <mat-progress-bar
+                   [color]="primary"
+                   [mode]="determinate"
+                   [value]="task.progress">
+               </mat-progress-bar>
+                </div>
+                <div class="text-white" style="font-size: 10px;">
+                   Notes: {{task.notes}}
+                </div>
+            </div>
+            <h1 style="margin-top: 30px;" class="title has-text-primary">
+                CREDENTIALS
+            </h1>
+            <div class="white-text">
+            ID: {{listId}}
+            </div>
+            <div class="white-text">
+            Password: {{pwd}} 
+            </div>
+            <button class="btn btn-primary add-button" (click)="addTaskClick()">
+                Add Task
+            </button>
+        </div>
+    </div>
+</div>

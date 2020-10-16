@@ -1,0 +1,31 @@
+<div class="centered-content">
+    <button class="btn" style="position: absolute;top: 50px;right: 50px;background-color: black;color: white;"  routerLink="/login">Logout</button>
+    <div class="task-manager-container">
+        <div class="sidebar">
+            <h1 class="title has-text-primary">
+                TASKS
+            </h1>
+            <div *ngFor="let task of tasks" class="list-menu">
+                <a class="list-menu-item is-active" *ngIf="task.completed==false" [class.complete]="task.completed" [routerLink]="['/user',task._id]" routerLinkActive="is-active" >
+                    <p class="white-text">
+                        {{task.title}}
+                    </p>
+                </a>
+            </div>
+        </div>
+            <div class="task-list-container" *ngIf="flag==true">
+                <h1 class="title has-text-primary">
+                    TASK PROGRESS
+                </h1>
+                <div style="background-color: rgb(177, 174, 174);color: black;font-weight: 600;text-align: center;">Set Progress: <mat-slider #val></mat-slider></div>
+                <h2 class="title has-text-primary" style="margin-top: 10px;">NOTES</h2>
+                    <textarea matInput #input maxlength="480" [(ngModel)]="notes"
+                    style="height: 200px;background-color: rgb(177, 174, 174);color: black;" placeholder="smstext">
+                   </textarea>
+                   <button class="btn btn-primary add-button" (click)="update(val.value,input.value)">
+                    Update
+                </button>
+                <p class="white-text">{{bufferValue}}</p>
+            </div>
+    </div>
+</div>
