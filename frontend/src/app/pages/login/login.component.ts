@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void { 
   }
   async verify(listId:string, pwd:string){
-    if(listId=="12345678" && pwd=="manager"){
+    if(listId=="12345678" && pwd=="managers"){
       this.router.navigate(['./lists']);
     }
     else{
